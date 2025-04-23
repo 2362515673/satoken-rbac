@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.liu.project.mapper.RoleMapper">
 
-    <resultMap id="BaseResultMap" type="com.liu.project.model.entity.Role">
+    <resultMap id="BaseResultMap" type="com.liu.rbac.model.entity.Role">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="type" column="type" jdbcType="TINYINT"/>

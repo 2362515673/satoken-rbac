@@ -11,7 +11,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.liu.project</groupId>
+    <groupId>com.liu.rbac</groupId>
     <artifactId>project-service</artifactId>
     <version>1.0-SNAPSHOT</version>
 
