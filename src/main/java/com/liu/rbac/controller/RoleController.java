@@ -1,15 +1,22 @@
 package com.liu.rbac.controller;
 
+import com.liu.rbac.constant.ErrorCode;
+import com.liu.rbac.exception.BaseException;
+import com.liu.rbac.utils.ResultPage;
+import com.liu.rbac.model.dto.EditRoleDTO;
+import com.liu.rbac.model.dto.QueryRoleDTO;
 import com.liu.rbac.model.dto.SaveRoleDTO;
+import com.liu.rbac.model.vo.RoleVO;
 import com.liu.rbac.service.RoleService;
 import com.liu.rbac.utils.Result;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/role")
@@ -19,7 +26,29 @@ public class RoleController {
     private RoleService roleService;
 
     @PostMapping("/add")
-    public Result<Long> saveRole(@RequestBody SaveRoleDTO dto){
+    @ApiOperation(value = "添加系统角色")
+    public Result<Long> saveRole(@RequestBody @Valid SaveRoleDTO dto) {
         return Result.success(roleService.saveRole(dto));
+    }
+
+    @PutMapping("/edit")
+    @ApiOperation(value = "修改系统角色")
+    public Result<Boolean> editRole(@RequestBody @Valid EditRoleDTO dto) {
+        return Result.success(roleService.editRole(dto));
+    }
+
+    @GetMapping("/page")
+    @ApiOperation(value = "分页查询系统角色")
+    public Result<ResultPage<RoleVO>> getRolePage(QueryRoleDTO dto) {
+        return Result.success(roleService.getRolePage(dto));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ApiOperation(value = "删除系统角色")
+    @ApiModelProperty(dataType = "Long", required = true, value = "角色id")
+    public void deleteRole(@PathVariable @NotNull(message = "角色id不能为空") Long id) {
+        if (!roleService.removeById(id)) {
+            throw new BaseException(ErrorCode.PARAMS_ERROR, "角色不存在");
+        }
     }
 }

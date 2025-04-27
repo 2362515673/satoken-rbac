@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -12,7 +13,7 @@ import lombok.Data;
 /**
  * 角色表
  */
-@TableName(value ="sys_role")
+@TableName(value = "sys_role")
 @Data
 public class Role implements Serializable {
     /**
@@ -38,6 +39,12 @@ public class Role implements Serializable {
      */
     @TableField(value = "remark")
     private String remark;
+
+    /**
+     * 角色状态 0：禁用 1：启用
+     */
+    @TableField(value = "status")
+    private Integer status;
 
     /**
      * 创建时间

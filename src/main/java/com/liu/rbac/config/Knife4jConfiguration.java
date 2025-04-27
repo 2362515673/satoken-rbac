@@ -19,16 +19,16 @@ public class Knife4jConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(new ApiInfoBuilder()
                         //描述字段支持Markdown语法
-                        .description("# Knife4j RESTful APIs")
+                        .description("RBAC权限管理系统")
                         .termsOfServiceUrl("https://doc.xiaominfo.com/")
-                        .contact("xiaoymin@foxmail.com")
+                        .contact("2362515673@qq.com")
                         .version("1.0")
                         .build())
                 //分组名称
                 .groupName("用户服务")
                 .select()
                 //这里指定Controller扫描包路径
-                .apis(RequestHandlerSelectors.basePackage("com.liu.project.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.liu.rbac.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
