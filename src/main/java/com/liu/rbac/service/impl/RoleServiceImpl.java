@@ -11,6 +11,7 @@ import com.liu.rbac.model.dto.EditRoleDTO;
 import com.liu.rbac.model.dto.QueryRoleDTO;
 import com.liu.rbac.model.dto.SaveRoleDTO;
 import com.liu.rbac.model.entity.Role;
+import com.liu.rbac.model.vo.RoleSelectVO;
 import com.liu.rbac.model.vo.RoleVO;
 import com.liu.rbac.service.RoleService;
 import com.liu.rbac.utils.ResultPage;
@@ -20,6 +21,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -60,6 +62,15 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role>
         page = roleMapper.selectPage(page, queryWrapper);
         // 4. 构建返回对象
         return new ResultPage<>(page.getTotal(), page.getPages(), page.getRecords().stream().map(item -> BeanUtil.toBean(item, RoleVO.class)).collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<RoleSelectVO> getRoleList() {
+        return lambdaQuery().select(Role::getId, Role::getName)
+                .list()
+                .stream()
+                .map(item -> BeanUtil.toBean(item, RoleSelectVO.class))
+                .collect(Collectors.toList());
     }
 }
 

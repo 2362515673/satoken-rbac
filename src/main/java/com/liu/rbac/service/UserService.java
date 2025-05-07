@@ -1,11 +1,12 @@
 package com.liu.rbac.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.liu.rbac.model.dto.UserLoginDTO;
-import com.liu.rbac.model.dto.UserRegisterDTO;
+import com.liu.rbac.model.dto.*;
 import com.liu.rbac.model.entity.User;
 import com.liu.rbac.model.vo.UserLoginVO;
+import com.liu.rbac.model.vo.UserRoleVO;
 import com.liu.rbac.model.vo.UserVO;
+import com.liu.rbac.utils.ResultPage;
 
 public interface UserService extends IService<User> {
     /**
@@ -42,4 +43,23 @@ public interface UserService extends IService<User> {
      * @return 用户基本信息
      */
     UserVO getCurrent();
+
+    /**
+     * 创建用户
+     * @param dto 用户信息
+     */
+    void saveUser(SaveUserDTO dto);
+
+    /**
+     * 分页获取用户
+     * @param dto 查询条件
+     * @return 用户列表
+     */
+    ResultPage<UserRoleVO> getUserPage(QueryUserDTO dto);
+
+    /**
+     * 修改用户信息
+     * @param dto 用户信息
+     */
+    void editUser(EditUserDTO dto);
 }

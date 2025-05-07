@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.liu.project.mapper.MenuMapper">
+<mapper namespace="com.liu.rbac.mapper.MenuMapper">
 
     <resultMap id="BaseResultMap" type="com.liu.rbac.model.entity.Menu">
             <id property="id" column="id" jdbcType="BIGINT"/>
@@ -24,7 +24,7 @@
         id,title,parent_id,
         code,name,path,
         url,type,icon,
-        order,create_time,update_time,
+        `order`,create_time,update_time,
         is_delete
     </sql>
 </mapper>

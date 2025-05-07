@@ -72,7 +72,7 @@ public class Menu implements Serializable {
     /**
      * 排序字段
      */
-    @TableField(value = "order")
+    @TableField(value = "`order`")
     private Integer order;
 
     /**

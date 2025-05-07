@@ -81,10 +81,10 @@ sa-token:
 
 # TODO minio配置 桶名需要自己改 注意点（endpoint 必须要加 http:// 否则会报错）
 minio:
-  endpoint: http://192.168.12.141:9000
+  endpoint: http://192.168.12.130:9000
   access-key: minioadmin
   secret-key: minioadmin
-  bucket-name: project
+  bucket-name: satoken-rbac
 
 
 liu:

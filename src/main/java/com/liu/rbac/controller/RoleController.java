@@ -2,6 +2,7 @@ package com.liu.rbac.controller;
 
 import com.liu.rbac.constant.ErrorCode;
 import com.liu.rbac.exception.BaseException;
+import com.liu.rbac.model.vo.RoleSelectVO;
 import com.liu.rbac.utils.ResultPage;
 import com.liu.rbac.model.dto.EditRoleDTO;
 import com.liu.rbac.model.dto.QueryRoleDTO;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @RestController
 @RequestMapping("/role")
@@ -50,5 +52,11 @@ public class RoleController {
         if (!roleService.removeById(id)) {
             throw new BaseException(ErrorCode.PARAMS_ERROR, "角色不存在");
         }
+    }
+
+    @GetMapping("/list")
+    @ApiOperation(value = "获取所有角色的id和名称")
+    public Result<List<RoleSelectVO>> getRoleList() {
+        return Result.success(roleService.getRoleList());
     }
 }
