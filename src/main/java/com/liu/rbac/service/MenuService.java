@@ -3,6 +3,7 @@ package com.liu.rbac.service;
 import com.liu.rbac.model.dto.SaveMenuDTO;
 import com.liu.rbac.model.entity.Menu;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.liu.rbac.model.vo.MenuOptionsVO;
 import com.liu.rbac.model.vo.TreeMenuVO;
 
 import java.util.List;
@@ -26,4 +27,11 @@ public interface MenuService extends IService<Menu> {
      * @return 是否添加成功
      */
     Boolean saveMenu(SaveMenuDTO dto);
+
+    /**
+     * 获取菜单树选项
+     *
+     * @return 菜单树选项
+     */
+    List<MenuOptionsVO> getTreeMenuOptions();
 }

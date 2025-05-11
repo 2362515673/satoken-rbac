@@ -1,6 +1,7 @@
 package com.liu.rbac.controller;
 
 import com.liu.rbac.model.dto.SaveMenuDTO;
+import com.liu.rbac.model.vo.MenuOptionsVO;
 import com.liu.rbac.model.vo.TreeMenuVO;
 import com.liu.rbac.service.MenuService;
 import com.liu.rbac.utils.Result;
@@ -24,6 +25,13 @@ public class MenuController {
     public Result<List<TreeMenuVO>> getTreeMenu() {
         return Result.success(menuService.getTreeMenu());
     }
+
+    @ApiOperation(value = "获取菜单id和标题树结构")
+    @GetMapping("/options")
+    public Result<List<MenuOptionsVO>> getTreeMenuOptions() {
+        return Result.success(menuService.getTreeMenuOptions());
+    }
+
 
     @ApiOperation(value = "添加菜单")
     @PostMapping("/save")
