@@ -10,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.sql.SQLSyntaxErrorException;
 import java.util.Objects;
 
 /**
@@ -25,6 +26,12 @@ public class GlobalExceptionHandler {
     public Result<Object> baseException(BaseException e) {
         log.error(e.getMessage());
         return Result.error(e.getMessage(), e.getCode());
+    }
+
+    @ExceptionHandler(value = SQLSyntaxErrorException.class)
+    public Result<Object> sqlSyntaxErrorException(SQLSyntaxErrorException e) {
+        log.error(e.getMessage());
+        return Result.error("SQL错误", ErrorCode.SYSTEM_ERROR.getCode());
     }
 
     /**

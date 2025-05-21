@@ -3,11 +3,17 @@ package com.liu.rbac.service;
 import com.liu.rbac.model.entity.RoleMenu;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Collection;
+import java.util.List;
+
 /**
 * @author liun
-* @description 针对表【sys_role_menu(角色菜单关联表)】的数据库操作Service
-* @createDate 2025-04-23 23:51:50
 */
 public interface RoleMenuService extends IService<RoleMenu> {
-
+    /**
+     * 根据角色id集合获取角色菜单关系
+     * @param roleIds 角色id集合
+     * @return 角色菜单关系列表
+     */
+    List<RoleMenu> getRoleMenuByRoleIds(Collection<Long> roleIds);
 }

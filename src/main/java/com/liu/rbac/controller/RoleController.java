@@ -2,6 +2,7 @@ package com.liu.rbac.controller;
 
 import com.liu.rbac.constant.ErrorCode;
 import com.liu.rbac.exception.BaseException;
+import com.liu.rbac.model.dto.AddRoleMenuDTO;
 import com.liu.rbac.model.vo.RoleSelectVO;
 import com.liu.rbac.utils.ResultPage;
 import com.liu.rbac.model.dto.EditRoleDTO;
@@ -58,5 +59,12 @@ public class RoleController {
     @ApiOperation(value = "获取所有角色的id和名称")
     public Result<List<RoleSelectVO>> getRoleList() {
         return Result.success(roleService.getRoleList());
+    }
+
+    @PostMapping("/add/menu")
+    @ApiOperation(value = "为角色添加菜单")
+    public Result<Boolean> addRoleMenu(@RequestBody @Valid AddRoleMenuDTO dto) {
+        roleService.addRoleMenu(dto);
+        return Result.success(true);
     }
 }

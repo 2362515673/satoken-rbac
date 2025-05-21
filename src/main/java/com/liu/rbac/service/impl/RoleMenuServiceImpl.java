@@ -1,20 +1,31 @@
 package com.liu.rbac.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.liu.rbac.model.entity.RoleMenu;
 import com.liu.rbac.service.RoleMenuService;
 import com.liu.rbac.mapper.RoleMenuMapper;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.Collection;
+import java.util.List;
+
 /**
-* @author liun
-* @description 针对表【sys_role_menu(角色菜单关联表)】的数据库操作Service实现
-* @createDate 2025-04-23 23:51:50
-*/
+ * @author liun
+ */
 @Service
 public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, RoleMenu>
-    implements RoleMenuService{
+        implements RoleMenuService {
+    @Resource
+    private RoleMenuMapper roleMenuMapper;
 
+    @Override
+    public List<RoleMenu> getRoleMenuByRoleIds(Collection<Long> roleIds) {
+        LambdaQueryWrapper<RoleMenu> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.in(RoleMenu::getRoleId, roleIds);
+        return roleMenuMapper.selectList(queryWrapper);
+    }
 }
 
 

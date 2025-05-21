@@ -1,5 +1,6 @@
 package com.liu.rbac.service;
 
+import com.liu.rbac.model.dto.AddRoleMenuDTO;
 import com.liu.rbac.model.vo.RoleSelectVO;
 import com.liu.rbac.utils.ResultPage;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -34,6 +35,7 @@ public interface RoleService extends IService<Role> {
 
     /**
      * 分页查询角色信息
+     *
      * @param dto 查询条件(角色名称和角色状态)
      * @return 分页角色信息
      */
@@ -41,7 +43,15 @@ public interface RoleService extends IService<Role> {
 
     /**
      * 获取所有角色的id和名称
+     *
      * @return 所有角色id和名称
      */
     List<RoleSelectVO> getRoleList();
+
+    /**
+     * 为角色添加菜单
+     *
+     * @param dto 角色id和菜单ids
+     */
+    void addRoleMenu(AddRoleMenuDTO dto);
 }

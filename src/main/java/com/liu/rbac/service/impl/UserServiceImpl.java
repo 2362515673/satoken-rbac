@@ -59,6 +59,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         queryWrapper.select(
                 User::getId,
                 User::getAccount,
+                User::getPassword,
                 User::getName,
                 User::getAvatar,
                 User::getProfile

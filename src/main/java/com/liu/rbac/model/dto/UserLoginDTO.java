@@ -13,7 +13,7 @@ public class UserLoginDTO implements Serializable {
      * 账号
      */
     @NotBlank(message = "账号不能为空")
-    @Length(min = 6, max = 12, message = "账号长度在6-12位之间")
+    @Length(min = 6, max = 16, message = "账号长度在6-12位之间")
     private String account;
 
     /**
